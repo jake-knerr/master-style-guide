@@ -64,6 +64,7 @@ For example, choosing to put a blank line before a _return_ statement does not t
 - **always / avoid** (stronger suggestion)
   - Note, if you are already using the imperative mood, then words like "always" are optional. For example, "Use semicolons" is already imperative, no need for "always."
 - **strongly / weakly** (use to adjust the strength of suggestion)
+- **acceptable** (permissible)
 - **Prefix optional rules with (Optional). Start sentence with "Consider".**
   - (Optional) Consider using ....
 
