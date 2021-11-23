@@ -26,7 +26,7 @@ Welcome to the master style guide for Blotli.
 
 ## Style vs. Design
 
-This guide focuses on more than simply aesthetic issues like formatting by also providing design guidance: styling with a purpose.
+Although this guide is called a style guide, it focuses on more than simply aesthetic issues like formatting. It also provides design guidance — styling with a purpose.
 
 When is a rule a style rule? When is a rule a design rule? Like most decisions in artistic endeavors, the difference is a matter of judgment.
 
