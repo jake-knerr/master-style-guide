@@ -40,13 +40,13 @@ In other words, style is more concerned with how information looks, rather than 
 
 #### Style is more coupled to a particular language than design.
 
-Different languages produce different style guides, but design invokes high-level abstractions that apply to all languages.
+Different languages produce different style guides, but design invokes high-level abstractions that apply to many languages.
 
-#### Style does not trigger side-effects.
+#### Style does not trigger side effects.
 
 For example, choosing to put a blank line before a _return_ statement does not trigger code refactoring.
 
-#### Many rules are edge cases that can be classified as style or design by reasonable developers.
+#### Many rules are edge cases that can be classified as style or design (or both) by reasonable developers.
 
 > Why are these distinctions important? It is good practice to question design decisions, to consider different design approaches, and to understand design decisions. It is not essential to spend mental capital on styling decisions.
 
@@ -172,7 +172,7 @@ See [Blotli JavaScript Style Guide](#).
 #### Database table and column names use lowercase and snake_case.
 
 ```sql
-# bad
+# avoid
 Big_Database: Table_name: Field_One, field_Two
 primarytable: Field1, fieldtwo
 
@@ -186,7 +186,7 @@ primary_table: field_1, field_two
 > Why? This creates strong contrast with the lowercase table and column names.
 
 ```sql
-# bad
+# avoid
 select *
   from table;
 
