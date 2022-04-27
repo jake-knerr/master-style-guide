@@ -1,10 +1,10 @@
-# Blotli Style Guide <!-- omit in toc -->
+# Master Style Guide <!-- omit in toc -->
 
 Welcome to the master style guide for Blotli.
 
 ## Copyright <!-- omit in toc -->
 
-© Jake Knerr at Blotli.
+Jake Knerr © Ardisia Labs LLC
 
 ## Table of Contents <a id="toc" name="toc"></a> <!-- omit in toc -->
 
