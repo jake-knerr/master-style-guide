@@ -14,12 +14,13 @@ Jake Knerr © Ardisia Labs LLC
   - [English Language](#english-language)
   - [Code Examples](#code-examples)
 - [Assets](#assets)
+- [Directories, Folder Structure, File names](#directories-folder-structure-file-names)
 - [CSS and HTML](#css-and-html)
-- [Directories, Folder Structure](#directories-folder-structure)
-- [Github](#github)
 - [JavaScript](#javascript)
+- [Node](#node)
 - [NPM](#npm)
 - [SQL](#sql)
+- [Github](#github)
 - [URLs](#urls)
 - [Miscellaneous](#miscellaneous)
   - [Design Patterns](#design-patterns)
@@ -58,7 +59,7 @@ For example, choosing to put a blank line before a _return_ statement does not t
 
 ### Terms
 
-#### Prefer the following terms when describing rules
+#### Prefer the following terms when describing rules:
 
 - **prefer / discourage** (weaker suggestions)
 - **always / avoid** (stronger suggestion)
@@ -78,7 +79,7 @@ For example, choosing to put a blank line before a _return_ statement does not t
 
 #### When choosing a national variety of English, prefer American English.
 
-> Why? I am located in the United States.
+> Why? I am American.
 
 ### Code Examples
 
@@ -113,35 +114,17 @@ photo-massive.img;
 
 ---
 
+## Directories, Folder Structure, File names
+
+See the naming guide in the [JS guide](https://github.com/jake-knerr/js-style-guide).
+
+**[⬆ Table of Contents](#toc)**
+
+---
+
 ## CSS and HTML
 
 See [CHESS](https://github.com/jake-knerr/chess).
-
-**[⬆ Table of Contents](#toc)**
-
----
-
-## Directories, Folder Structure
-
-#### Directories names use lowercase and kebab-case.
-
-> Why? This convention provides maximum compatibility across platforms.
-
-```
-// avoid
-/Jake's Folder/
-
-// good
-/jakes-folder/
-```
-
-**[⬆ Table of Contents](#toc)**
-
----
-
-## Github
-
-#### Repository names are all lowercase.
 
 **[⬆ Table of Contents](#toc)**
 
@@ -154,6 +137,77 @@ See [JavaScript Style Guide](<(https://github.com/jake-knerr/js-style-guide)>).
 **[⬆ Table of Contents](#toc)**
 
 ---
+
+## Node
+
+#### Divide up apps into feature/domain folders with a file in the root directory named `server` that bootstraps the server.
+
+Optionally, a `.env` file at the root may be useful to store site secrets.
+
+```
+/auth
+/cars
+/client
+/customers
+server.js
+```
+
+#### Common top-level folders:
+
+- `/client` - the client application.
+- `/site` - public website.
+- `/types` - shared type definitions, enums, classes, and jsdoc definitions that do not fit cleanly into a feature folder.
+- `/utils` - shared utils.
+- `/validators` - shared validators.
+
+#### Each top-level feature/domain folder prefers these sub-folders:
+
+- `/routes` - post requests should use CRUD prefixes in the url. E.G. `/create-topic`
+- `/controllers` - all exported functions use `handleXXX` as a naming scheme.
+  - Prefer thin controllers and put business logic in the services.
+  - Responses prefer a JSON response with the following signature: `{ok: boolean, error: string|string[]}`;
+- `/models` - all exported functions use CRUD prefix names like `readData`, `updateData`, etc. Models are "dumb" and use simple CRUD functions. The services are smart.
+  - Models are the gateway to the persistence layer. All SQL/DB code is in model functions.
+- `/services` - exported functions are named using `get/set/add/remove` to distinguish them from model functions.
+  - Services are the API that each feature uses to communicate with each-other, and they are the gateway to the model. Services are "smart" and models are "dumb". They provide the API for features to interact with one-another.
+- `/views` - Templates, static view files, or the src for a SPA.
+- `/public` - static files accessible by name.
+  - Such files are not in `/views` because these can be accessed without a "view".
+  - `/public/assets` - all static non-html files.
+- `/validators` - exported functions start with `validate`. They validate and sanitize data in requests.
+  - Validators are middleware used to validate data before it gets to the controllers.
+  - They validate the shape of data so typically there are no hits to the database or services.
+  - For errors, either throw `500`|`400` for tampering, or errors in an array on the `Request` object for handling by the controllers.
+- `/types` - enums, classes and jsdoc definitions that are specific to the feature, and can be used by other features.
+- `/utils` - feature specific utilities.
+
+#### Views and validators are contained within the same feature folder as the routes that use them.
+
+I find it more intuitive for routes, validators, and views to be grouped because they are not shared between different feature modules. However, the service/model layer is shared and should be split up into each's respective feature folder.
+
+```
+/* avoid */
+/admin
+  /admin/services/auth.js
+/auth
+  /auth/views/admin-view-auth.ejs
+
+/* good */
+/admin
+  /admin/views/admin-view-auth.ejs
+/auth
+  /auth/services/service-auth.js
+```
+
+#### It is permissible to merge the controllers into the routes if it improves code clarity.
+
+I have found that separation of responsibilities between routing and controllers can result in useless complexity.
+
+#### Always validate user submitted data.
+
+Do not allow user tampering to crash the server.
+
+**[⬆ Table of Contents](#toc)**
 
 ## NPM
 
@@ -224,6 +278,14 @@ SELECT id, long_column_name, event_longer_table_name,
        ridiculously_long_table name
   FROM channels
 ```
+
+**[⬆ Table of Contents](#toc)**
+
+---
+
+## Github
+
+#### Repository names are all lowercase.
 
 **[⬆ Table of Contents](#toc)**
 
