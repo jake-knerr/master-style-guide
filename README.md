@@ -144,6 +144,7 @@ See [JavaScript Style Guide](https://github.com/jake-knerr/js-style-guide).
 Optionally, a `.env` file at the root may be useful to store site secrets.
 
 ```
+.env
 /auth
 /cars
 /client
@@ -172,12 +173,12 @@ server.js
 - `/views` - Templates, static view files, or the src for a SPA.
 - `/public` - static files accessible by name.
   - Such files are not in `/views` because these can be accessed without a "view".
-  - `/public/assets` - all static non-html files.
-- `/validators` - exported functions start with `validate`. They validate and sanitize data in requests.
+  - `/public/assets` - all static non-html, non-js, and non-css files.
+- `/validators` - all exported functions use `validateXXX` as a naming scheme. They validate and sanitize data in requests.
   - Validators are middleware used to validate data before it gets to the controllers.
   - They validate the shape of data so typically there are no hits to the database or services.
-  - For errors, either throw `500`|`400` for tampering, or errors in an array on the `Request` object for handling by the controllers.
-- `/types` - enums, classes and jsdoc definitions that are specific to the feature, and can be used by other features.
+  - For errors, either throw `400`|`500` for tampering, or errors in an array on the `Request` object for handling by the controllers.
+- `/types` - enums, classes, and jsdoc definitions that are specific to the feature, and can be used by other features.
 - `/utils` - feature specific utilities.
 
 #### Views and validators are contained within the same feature folder as the routes that use them.
@@ -187,15 +188,19 @@ I find it more intuitive for routes, validators, and views to be grouped because
 ```
 /* avoid */
 /admin
-  /admin/services/auth.js
+  /services/
+    auth.js
 /auth
-  /auth/views/admin-view-auth.ejs
+  /views/
+    admin-view-auth.ejs
 
 /* good */
 /admin
-  /admin/views/admin-view-auth.ejs
+  /views/
+    admin-view-auth.ejs
 /auth
-  /auth/services/service-auth.js
+  /services/
+    service-auth.js
 ```
 
 #### It is permissible to merge the controllers into the routes if it improves code clarity.
