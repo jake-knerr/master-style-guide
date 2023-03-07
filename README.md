@@ -13,7 +13,6 @@ Jake Knerr © Ardisia Labs LLC
   - [Terms](#terms)
   - [English Language](#english-language)
   - [Code Examples](#code-examples)
-- [Assets](#assets)
 - [Directories, Folder Structure, File names](#directories-folder-structure-file-names)
 - [CSS and HTML](#css-and-html)
 - [JavaScript](#javascript)
@@ -91,28 +90,6 @@ For example, choosing to put a blank line before a _return_ statement does not t
 
 ---
 
-## Assets
-
-#### Asset files' (images, sounds, documents, binaries, etc.) names use lowercase and train-case.
-
-```
-// avoid
-Report.PDF
-dingDong.wav
-RUN.exe
-photoMASSIVE.ImG
-
-// good
-report.pdf;
-ding-dong.wav;
-run.exe;
-photo-massive.img;
-```
-
-**[⬆ Table of Contents](#toc)**
-
----
-
 ## Directories, Folder Structure, File names
 
 See the naming guide in the [JS guide](https://github.com/jake-knerr/js-style-guide).
@@ -173,7 +150,7 @@ server.js
 - `/views` - Templates, static view files, or the src for a SPA.
 - `/public` - static files accessible by name.
   - Such files are not in `/views` because these can be accessed without a "view".
-  - `/public/assets` - all static non-html, non-js, and non-css files.
+  - `/public/assets` - all static non-html files.
 - `/validators` - all exported functions use `validateXXX` as a naming scheme. They validate and sanitize data in requests.
   - Validators are middleware used to validate data before it gets to the controllers.
   - They validate the shape of data so typically there are no hits to the database or services.
