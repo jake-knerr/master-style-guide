@@ -21,7 +21,6 @@ Jake Knerr © Ardisia Labs LLC
 - [NPM](#npm)
 - [SQL](#sql)
 - [Github](#github)
-- [URLs](#urls)
 - [Miscellaneous](#miscellaneous)
   - [Design Patterns](#design-patterns)
 
@@ -286,28 +285,6 @@ SELECT id, long_column_name, event_longer_table_name,
 ## Github
 
 #### Repository names are all lowercase.
-
-**[⬆ Table of Contents](#toc)**
-
----
-
-## URLs
-
-#### Prefer lowercase snake_case for API URLs. For all other HTTP URLs, prefer lowercase train-case.
-
-```
-// discouraged
-http://xyz.com/getDocs.html
-
-// preferred
-http://xyz.com/get-docs.html
-
-// discouraged
-http://rest.api.com/multi-TIER-docs
-
-// preferred
-http://rest.api.com/multi_tier_docs
-```
 
 **[⬆ Table of Contents](#toc)**
 
