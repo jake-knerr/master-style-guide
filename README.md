@@ -94,7 +94,7 @@ For example, choosing to put a blank line before a _return_ statement does not t
 
 ## Assets
 
-#### Asset files' (images, sounds, documents, binaries, etc.) names use lowercase and kebab-case.
+#### Asset files' (images, sounds, documents, binaries, etc.) names use lowercase and train-case.
 
 ```
 // avoid
@@ -132,7 +132,7 @@ See [CHESS](https://github.com/jake-knerr/chess).
 
 ## JavaScript
 
-See [JavaScript Style Guide](<(https://github.com/jake-knerr/js-style-guide)>).
+See [JavaScript Style Guide](https://github.com/jake-knerr/js-style-guide).
 
 **[⬆ Table of Contents](#toc)**
 
@@ -293,7 +293,7 @@ SELECT id, long_column_name, event_longer_table_name,
 
 ## URLs
 
-#### Prefer lowercase snake_case for API URLs. For all other HTTP URLs, prefer lowercase kebab-case.
+#### Prefer lowercase snake_case for API URLs. For all other HTTP URLs, prefer lowercase train-case.
 
 ```
 // discouraged
