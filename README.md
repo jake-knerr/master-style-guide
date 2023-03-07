@@ -295,7 +295,7 @@ SELECT id, long_column_name, event_longer_table_name,
 ### Design Patterns
 
 - [Gang of Four (GoF) Design Patterns in JavaScript](https://github.com/jake-knerr/gof-design-patterns-js)
-- [View Component Design Pattern](https://github.com/jake-knerr/view-component-design-pattern)
+- [Cogent](https://github.com/jake-knerr/cogent)
 
 **[⬆ Table of Contents](#toc)**
 
