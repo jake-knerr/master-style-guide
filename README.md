@@ -208,7 +208,13 @@ Do not allow user tampering to crash the server.
 
 > Why? Because databases store data, which are "things".
 
-#### Database names, table names, and column names are named using the same conventions as laid out in the [JavaScript Style Guide](https://github.com/jake-knerr/js-style-guide) for data.
+#### Database and table names use lower snake-case.
+
+> Why use lowercase? Many databases are configured to require lowercase.
+
+> Why use snake-case? Because it is the SQL standard convention.
+
+#### Column names are named using the same conventions as laid out in the [JavaScript Style Guide](https://github.com/jake-knerr/js-style-guide) for data.
 
 > Why? The data more easily maps to JSON and JavaScript naming conventions.
 
