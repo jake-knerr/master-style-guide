@@ -204,11 +204,11 @@ Do not allow user tampering to crash the server.
 
 #### Use public ids that are unguessable.
 
-#### Database names, table names, and column names use lowercase nouns.
+#### Database names, table names, and column names use nouns.
 
 > Why? Because databases store data, which are "things".
 
-#### Use camelCase for column names.
+#### Database names, table names, and column names are named using the same conventions as laid out in the [JavaScript Style Guide](https://github.com/jake-knerr/js-style-guide) for data.
 
 > Why? The data more easily maps to JSON and JavaScript naming conventions.
 
