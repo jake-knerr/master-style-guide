@@ -204,17 +204,13 @@ Do not allow user tampering to crash the server.
 
 #### Use public ids that are unguessable.
 
-#### Database table and column names use lowercase and snake_case.
+#### Database names, table names, and column names use lowercase nouns.
 
-```sql
-# avoid
-Big_Database: Table_name: Field_One, field_Two
-primarytable: Field1, fieldtwo
+> Why? Because databases store data, which are "things".
 
-# good
-big_database: table_name: field_one, field_two
-primary_table: field_1, field_two
-```
+#### Use camelCase for column names.
+
+> Why? The data more easily maps to JSON and JavaScript naming conventions.
 
 #### SQL keywords are capitalized in queries.
 
