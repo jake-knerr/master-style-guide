@@ -228,38 +228,97 @@ select *
   from table;
 
 # good
-SELECT *
-  FROM table;
+SELECT
+  *
+FROM
+  table;
 ```
 
-#### Prefer to place one SQL keyword per line and horizontally align all the keywords at the same syntactic level.
-
-> Why? This makes the query easy to read.
+#### Prefer to place root keywords on their own line and indent the remainder of the clause.
 
 ```sql
 # preferred
-   SELECT channels.*,
-          COUNT(messages.id) as messages_count,
-          (SELECT COUNT(channels_users.id)
-            FROM channels_users
-            WHERE channels_users.channel_id = channels.id) as user_count
-     FROM channels
-     JOIN channels_users
-       ON channels.id = channels_users.channel_id
-      AND channels_users.user_id = ?
-LEFT JOIN messages
-       ON messages.channel_id = channels.id
- GROUP BY channels.id
+SELECT
+  *
+FROM
+  clients
+WHERE
+  name = "jake"
+LIMIT
+  100
 ```
 
-#### Prefer to wrap overflowing queries but do not indent.
+#### Prefer to keywords at the start of the line.
+
+Exceptions: Keywords that appear inside clauses like "AS", "DESC".
+
+```sql
+# discouraged
+SELECT
+  *
+FROM
+  clients
+WHERE
+  name = "jake" AND money > 1000
+
+# preferred
+SELECT
+  *
+FROM
+  clients
+WHERE
+  name = "jake"
+  AND money > 1000
+```
+
+#### Overflowing parenthesis should be on their own line and indented at the appropriate syntactic level.
 
 ```sql
 # preferred
-SELECT id, long_column_name, event_longer_table_name,
-       absurdly_long_table_name, gigantic_table_name,
-       ridiculously_long_table name
-  FROM channels
+SELECT
+  channels.*,
+  COUNT(messages.id) AS messagesCount,
+  (
+    SELECT
+      COUNT(channels_users.id)
+    FROM
+      channels_users
+    WHERE
+      channels_users.channelID = channels.id
+  ) AS userCount
+```
+
+#### Prefer to wrap overflowing queries. Wrap at the appropriate syntactic level.
+
+```sql
+# preferred
+SELECT
+  id, longColumnName, eventLongerTableName,
+  absurdlyLongTableName, giganticTableName,
+  ridiculouslyLongTableName
+```
+
+#### Prefer to left align at the same syntactic level.
+
+> Why? This makes the query easy to read. Also, aligning keywords from the left/start makes formatting SQL in raw strings much easier.
+
+```sql
+# preferred
+SELECT
+  channels.*,
+FROM
+  channels
+JOIN
+  channels_users
+  ON
+    channels.id = channels_users.channel_id
+    AND channels_users.user_id = ?
+LEFT JOIN
+  messages
+  ON
+    messages.channel_id = channels.id
+GROUP BY
+  channels.id
 ```
 
 **[⬆ Table of Contents](#toc)**
