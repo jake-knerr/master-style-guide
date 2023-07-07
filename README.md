@@ -305,7 +305,7 @@ WHERE
   AND userName = "Jake"
 ```
 
-#### For multi-line parenthesis, prefer to place the trailing parenthesis alone on a new line.
+#### For multi-line parenthesis, prefer to place the leading parenthesis above the text it encloses and the trailing parenthesis alone on a new line.
 
 ```sql
 # preferred
