@@ -234,91 +234,114 @@ FROM
   table;
 ```
 
-#### Prefer to place root keywords on their own line and indent the remainder of the clause.
+#### Prefer left-alignment at the same syntactic level.
 
-```sql
-# preferred
-SELECT
-  *
-FROM
-  clients
-WHERE
-  name = "jake"
-LIMIT
-  100
-```
-
-#### Prefer to keywords at the start of the line.
-
-Exceptions: Keywords that appear inside clauses like "AS", "DESC".
+> Why? Left alignment is much easier to maintain than right-alignment. Especially for SQL written in raw strings.
 
 ```sql
 # discouraged
 SELECT
-  *
+  *,
+  FROM
+  channels
+
+# good
+SELECT
+  *,
 FROM
-  clients
-WHERE
-  name = "jake" AND money > 1000
-
-# preferred
-SELECT
-  *
-FROM
-  clients
-WHERE
-  name = "jake"
-  AND money > 1000
+  channels
 ```
 
-#### Overflowing parenthesis should be on their own line and indented at the appropriate syntactic level.
+#### Prefer to place statements, clauses, and expression keywords on their own line. Indent the remainder of the instructions.
+
+If a clause is a compound clause (for example `JOIN` and `ON` or `ORDER BY` and `DESC`), then place the trailing part of the compound clause on its own line and indented.
+
+> Why? This technique makes spotting the relevant keywords easier and simplifies wrapping line-overflow.
 
 ```sql
+# discouraged
+SELECT *,
+FROM channels
+JOIN channels_users ON channels.id = channels_users.channel_id
+GROUP BY channels.id
+
 # preferred
 SELECT
-  channels.*,
-  COUNT(messages.id) AS messagesCount,
-  (
-    SELECT
-      COUNT(channels_users.id)
-    FROM
-      channels_users
-    WHERE
-      channels_users.channelID = channels.id
-  ) AS userCount
-```
-
-#### Prefer to wrap overflowing queries. Wrap at the appropriate syntactic level.
-
-```sql
-# preferred
-SELECT
-  id, longColumnName, eventLongerTableName,
-  absurdlyLongTableName, giganticTableName,
-  ridiculouslyLongTableName
-```
-
-#### Prefer to left align at the same syntactic level.
-
-> Why? This makes the query easy to read. Also, aligning keywords from the left/start makes formatting SQL in raw strings much easier.
-
-```sql
-# preferred
-SELECT
-  channels.*,
+  *,
 FROM
   channels
 JOIN
   channels_users
   ON
     channels.id = channels_users.channel_id
-    AND channels_users.user_id = ?
-LEFT JOIN
-  messages
-  ON
-    messages.channel_id = channels.id
 GROUP BY
   channels.id
+```
+
+#### Prefer to place each condition and argument on a separate line.
+
+```sql
+# discouraged
+SELECT
+  id, userName, userLocation, GREATEST(minMoney, maxMoney)
+FROM
+  channels
+WHERE
+  id > 10 AND userName = "Jake"
+
+# preferred
+SELECT
+  id,
+  userName,
+  userLocation,
+  GREATEST(
+    minMoney,
+    maxMoney
+  )
+FROM
+  channels
+WHERE
+  id > 10
+  AND userName = "Jake"
+```
+
+#### For multi-line parenthesis, prefer to place the trailing parenthesis alone on a new line.
+
+```sql
+# preferred
+SELECT
+  GREATEST(
+    minMoney,
+    maxMoney
+  )
+FROM
+  channels
+WHERE
+  id > 10
+  AND userName = "Jake"
+```
+
+#### Operators are inline. However, if either operand is multi-line then the operator should be placed alone on a newline with the operands left-aligned above and below.
+
+```sql
+# good
+SELECT
+  *
+FROM
+  users
+UNION
+SELECT
+  *
+FROM
+  clients
+
+# good
+SELECT
+  *
+FROM
+  users
+WHERE
+  userName LIKE "%j%"
 ```
 
 **[⬆ Table of Contents](#toc)**
