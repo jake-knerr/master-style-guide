@@ -176,6 +176,10 @@ I have found that separation of responsibilities between routing and controllers
 
 Do not allow user tampering to crash the server.
 
+#### Use domain entities to map persistence layer data to the application layer data.
+
+Domain entities use the naming nomenclature `xxxEntity`.
+
 **[⬆ Table of Contents](#toc)**
 
 ## NPM
