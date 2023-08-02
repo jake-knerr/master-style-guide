@@ -168,31 +168,9 @@ server.js
 - `/types` - enums, classes, and jsdoc definitions that are specific to the feature, and can be used by other features.
 - `/utils` - feature specific utilities.
 
-#### Views and validators are contained within the same feature folder as the routes that use them.
-
-I find it more intuitive for routes, validators, and views to be grouped because they are not shared between different feature modules. However, the service/model layer is shared and should be split up into each's respective feature folder.
-
-```
-/* avoid */
-/admin
-  /services/
-    auth.js
-/auth
-  /views/
-    admin-view-auth.ejs
-
-/* good */
-/admin
-  /views/
-    admin-view-auth.ejs
-/auth
-  /services/
-    service-auth.js
-```
-
 #### It is permissible to merge the controllers into the routes if it improves code clarity.
 
-I have found that separation of responsibilities between routing and controllers can result in useless complexity.
+I have found that separation of responsibilities between routing and controllers can result in meaningless complexity.
 
 #### Always validate user submitted data.
 
