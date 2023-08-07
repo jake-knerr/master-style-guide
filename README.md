@@ -147,7 +147,7 @@ server.js
   - Exported functions use `handleXXX` as a naming scheme.
 - `/models` - all exported functions use CRUD prefix names like `readData`, `updateData`, etc. Models are "dumb" and use simple CRUD functions. The services are smart.
   - Models are the gateway to the persistence layer. All SQL/DB code is in model functions.
-  - Prefer the following top-down function order: `read/update/create/delete`.
+  - Prefer the following top-down order for exported functions: `read/update/create/delete`.
   - Domain entities are defined in models. E.G. `User`, `Car`, `Customer`.
 - `/services` - exported functions that are the API that each feature uses to communicate with each-other, and they are the gateway to the model. Services are "smart" and models are "dumb". They provide the API for features to interact with one-another. They also provide the data that the controllers use.
   - When deciding which service a function belongs to, consider the data. What data is being mutated, created, or read? What service does this data fit into the best?
