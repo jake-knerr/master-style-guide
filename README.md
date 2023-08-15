@@ -165,7 +165,7 @@ server.js
   - Validators are middleware used to validate data before it gets to the controllers.
   - They validate the shape of data so typically there are no hits to the database or services.
   - For errors, either throw `400`|`500` for tampering, or errors in an array on the `Request` object for handling by the controllers.
-- `/types` - enums, classes, and jsdoc definitions that are specific to the feature, and can be used by other features.
+- `/types` - enums, classes, and jsdoc definitions that are specific to the feature, and can be used by other features. For data, prefer to place it in the model.
 - `/utils` - feature specific utilities.
 
 #### It is permissible to merge the controllers into the routes if it improves code clarity.
