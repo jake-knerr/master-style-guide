@@ -116,71 +116,11 @@ See [JavaScript Style Guide](https://github.com/jake-knerr/js-style-guide).
 
 ## Node
 
-#### Divide up apps into feature/domain folders with a file in the root directory named `server` that bootstraps the server.
-
-Optionally, a `.env` file at the root may be useful to store site secrets.
-
-```
-.env
-/auth
-/cars
-/client
-/customers
-server.js
-```
-
-#### Common top-level folders:
-
-- `/app` - the client application.
-- `/web` - public website(s).
-- `/types` - shared type definitions, enums, classes, and jsdoc definitions that do not fit cleanly into a feature folder.
-- `/utils` - shared utils.
-- `/validators` - shared validators.
-
-#### Each top-level feature/domain folder prefers these sub-folders:
-
-- `/routes` - post requests should use CRUD prefixes in the url. E.G. `/create-topic`
-- `/controllers` - HTTP functions. The only function types that accept `req`, `res`,and `session` objects.
-  - Prefer thin controllers and put business logic in the services.
-    - Controllers should just concern themselves with HTTP and data shape validation.
-  - Responses prefer a JSON response with the following signature: `{ok: boolean, error: string|string[]}`;
-  - Exported functions use `handleXXX` as a naming scheme.
-- `/models` - all exported functions use CRUD prefix names like `readData`, `updateData`, etc. Models are "dumb" and use simple CRUD functions. The services are smart.
-  - Models are the gateway to the persistence layer. All SQL/DB code is in model functions.
-  - Prefer the following top-down order for exported functions: `read/update/create/delete`.
-  - Domain entities are defined in models. E.G. `User`, `Car`, `Customer`.
-- `/services` - exported functions that are the API that each feature uses to communicate with each-other, and they are the gateway to the model. Services are "smart" and models are "dumb". They provide the API for features to interact with one-another. They also provide the data that the controllers use.
-  - When deciding which service a function belongs to, consider the data. What data is being mutated, created, or read? What service does this data fit into the best?
-  - Prefer the following top-down function order: `get/set/add/remove`.
-- `/handlers` - general handler functions that do not cleanly fit into a more specific feature folder.
-  - Exported functions are named using `handleXXX` as a naming scheme.
-- `/views` - Templates and static view files.
-- `/src` - source files for any transpiled, compiled, or bundled libraries.
-  - Even for multiple discrete libraries, prefer to put them all in a single `/src` folder per feature.
-- `/public` - static files accessible by name.
-  - Mount specific folders in `/public/*` to specific routes. This makes the files' locations clear, allows one to mount static assets off the main router increasing 404 performance, and makes it easier to signal to the CDN what to cache. E.G. `/public/assets/` mounted to URL `/assets`. If mounting a folder to the root of the domain, put the files in a`/public/root` folder.
-    - `/public/assets` - static files.
-    - `/public/root` - files accessible from root of domain.
-- `/validators` - all exported functions use `validateXXX` as a naming scheme. They validate and sanitize data in requests.
-  - Validators are middleware used to validate data before it gets to the controllers.
-  - They validate the shape of data so typically there are no hits to the database or services.
-  - For errors, either throw `400`|`500` for tampering, or errors in an array on the `Request` object for handling by the controllers.
-- `/types` - enums, classes, and jsdoc definitions that are specific to the feature, and can be used by other features. For data, prefer to place it in the model.
-- `/utils` - feature specific utilities.
-
-#### It is permissible to merge the controllers into the routes if it improves code clarity.
-
-I have found that separation of responsibilities between routing and controllers can result in meaningless complexity.
-
-#### Always validate user submitted data.
-
-Do not allow user tampering to crash the server.
-
-#### Use domain entities to map persistence layer data to the application layer data.
-
-Domain entities use the naming nomenclature `xxxEntity`.
+See [JavaScript Style Guide](https://github.com/jake-knerr/js-style-guide).
 
 **[⬆ Table of Contents](#toc)**
+
+---
 
 ## NPM
 
