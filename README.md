@@ -173,13 +173,13 @@ FROM
 ```sql
 # discouraged
 SELECT
-  *,
+  *
   FROM
   channels
 
 # good
 SELECT
-  *,
+  *
 FROM
   channels
 ```
