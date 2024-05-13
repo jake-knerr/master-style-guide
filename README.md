@@ -12,7 +12,6 @@ Jake Knerr © Ardisia Labs LLC
 - [Background](#background)
   - [Terms](#terms)
   - [English Language](#english-language)
-  - [Code Examples](#code-examples)
 - [Directories, Folder Structure, File names](#directories-folder-structure-file-names)
 - [CSS and HTML](#css-and-html)
 - [JavaScript](#javascript)
@@ -59,10 +58,9 @@ For example, choosing to put a blank line before a _return_ statement does not t
 
 #### Prefer the following terms when describing rules:
 
-- **prefer / discourage** (weaker suggestions)
-- **always / avoid** (stronger suggestion)
-  - Note, if you are already using the imperative mood, then words like "always" are optional. For example, "Use semicolons" is already imperative, no need for "always."
-- **strongly / weakly** (use to adjust the strength of suggestion)
+- **discouraged, preferred** (weaker suggestions)
+- **avoid, good** (stronger suggestion)
+- **weakly / strongly** (use to adjust the strength of suggestion)
 - **acceptable** (permissible)
 - **Prefix optional rules with (Optional). Start sentence with "Consider".**
   - (Optional) Consider using ....
@@ -78,17 +76,6 @@ For example, choosing to put a blank line before a _return_ statement does not t
 #### When choosing a national variety of English, prefer American English.
 
 > Why? I am American.
-
-### Code Examples
-
-#### When illustrating the incorrect versus the correct way of coding, prefer the following language:
-
-- **discouraged / preferred** (weaker)
-- **avoid / good** (stronger)
-
-**[⬆ Table of Contents](#toc)**
-
----
 
 ## Directories, Folder Structure, File names
 
@@ -177,7 +164,7 @@ SELECT
   FROM
   channels
 
-# good
+# preferred
 SELECT
   *
 FROM
@@ -188,7 +175,7 @@ FROM
 
 If a clause is a compound clause (for example `JOIN` and `ON` or `ORDER BY` and `DESC`), then place the trailing part of the compound clause on its own line and indented.
 
-> Why? This technique makes it easy to see the keywords and the instructions and simplifies line-wrapping.
+> Why? This technique makes it easy to see the keywords, the instructions and simplifies line-wrapping.
 
 ```sql
 # discouraged
@@ -259,7 +246,7 @@ SELECT
 Prefer to place logical operators at the start of the line.
 
 ```sql
-# good
+# good - UNION is multi-line
 SELECT
   *
 FROM
@@ -270,7 +257,7 @@ SELECT
 FROM
   clients
 
-# good
+# good - LIKE is single line
 SELECT
   *
 FROM
