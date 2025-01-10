@@ -215,7 +215,7 @@ SELECT
   id,
   userName,
   userLocation,
-  GREATEST(
+  GREATEST (
     minMoney,
     maxMoney
   )
@@ -232,10 +232,12 @@ SELECT
 
 #### For multi-line parenthesis, prefer to place the leading parenthesis above the text it encloses and the trailing parenthesis on a new line.
 
+Place a space between adjacent keywords and the parenthesis.
+
 ```sql
 # preferred
 SELECT
-  GREATEST(
+  GREATEST (
     minMoney,
     maxMoney
   )
