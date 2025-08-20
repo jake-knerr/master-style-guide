@@ -1,6 +1,6 @@
 # Master Development Guide <!-- omit in toc -->
 
-Welcome to my master development guide.s
+Welcome to my master development guide.
 
 ## Copyright <!-- omit in toc -->
 
