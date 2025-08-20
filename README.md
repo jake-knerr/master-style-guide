@@ -45,7 +45,7 @@ For example, choosing to put a blank line before a _return_ statement does not t
 
 #### Many rules are edge cases that can be classified as style or architectural (or both) by reasonable developers.
 
-> Why are these distinctions important? It is good practice to question architectural decisions, to consider different architectural approaches, and to understand architectural decisions. It is not essential to spend mental capital on styling decisions.
+> Why are these distinctions important? It is good practice to question, consider, and understand architectural decisions. It is not essential to spend mental capital on styling decisions.
 
 **[⬆ Table of Contents](#toc)**
 
