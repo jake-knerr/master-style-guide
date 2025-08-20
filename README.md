@@ -14,8 +14,7 @@ Jake Knerr © Ardisia Labs LLC
   - [English Language](#english-language)
 - [Directories, Folder Structure, File names](#directories-folder-structure-file-names)
 - [CSS and HTML](#css-and-html)
-- [JavaScript](#javascript)
-- [Node](#node)
+- [JavaScript \& Node](#javascript--node)
 - [NPM](#npm)
 - [SQL](#sql)
 - [Github](#github)
@@ -94,17 +93,9 @@ See [CHESS](https://github.com/jake-knerr/chess).
 
 ---
 
-## JavaScript
+## JavaScript & Node
 
-See [JavaScript Style Guide](https://github.com/jake-knerr/js-style-guide).
-
-**[⬆ Table of Contents](#toc)**
-
----
-
-## Node
-
-See [JavaScript Style Guide](https://github.com/jake-knerr/js-style-guide).
+See [JavaScript and Node Development and Style Guide](https://github.com/jake-knerr/javascript-and-node-development-and-style-guide).
 
 **[⬆ Table of Contents](#toc)**
 
