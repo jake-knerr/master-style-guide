@@ -1,6 +1,6 @@
-# Master Development and Style Guide <!-- omit in toc -->
+# Master Development Guide <!-- omit in toc -->
 
-Welcome to my master development and style guide.
+Welcome to my master development guide.
 
 ## Copyright <!-- omit in toc -->
 
@@ -23,7 +23,7 @@ Jake Knerr © Ardisia Labs LLC
 
 ## Development vs. Style
 
-This guide focuses on more than simply aesthetic issues like formatting. It also provides development guidance.
+This guide focuses on more than simply aesthetic/styling issues like formatting. It also provides development guidance.
 
 When is a rule a style rule? When is a rule a development rule? Like most decisions in artistic endeavors, the difference is a matter of judgment.
 
@@ -78,7 +78,7 @@ For example, choosing to put a blank line before a _return_ statement does not t
 
 ## Directories, Folder Structure, File names
 
-See the naming guide in the [JavaScript and Node Development and Style Guide](https://github.com/jake-knerr/javascript-and-node-development-and-style-guide).
+See the naming guide in the [JavaScript and Node Development Guide](https://github.com/jake-knerr/javascript-and-node-development-guide).
 
 **[⬆ Table of Contents](#toc)**
 
@@ -94,7 +94,7 @@ See [CHESS](https://github.com/jake-knerr/chess).
 
 ## JavaScript & Node
 
-See [JavaScript and Node Development and Style Guide](https://github.com/jake-knerr/javascript-and-node-development-and-style-guide).
+See [JavaScript and Node Development Guide](https://github.com/jake-knerr/javascript-and-node-development-guide).
 
 **[⬆ Table of Contents](#toc)**
 
