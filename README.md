@@ -19,6 +19,7 @@ Jake Knerr © Ardisia Labs LLC
 - [NPM](#npm)
 - [SQL](#sql)
 - [Github](#github)
+- [Front-End Development](#front-end-development)
 - [Miscellaneous](#miscellaneous)
   - [Design Patterns](#design-patterns)
 
@@ -133,9 +134,83 @@ See [JavaScript Style Guide](https://github.com/jake-knerr/js-style-guide).
 
 > Why use snake-case? Because it is the SQL standard convention.
 
-#### Column names are named using the same conventions as laid out in the [JavaScript Style Guide](https://github.com/jake-knerr/js-style-guide) for data.
+#### Column names are named using lower-camel-case.
 
 > Why? The data more easily maps to JSON and JavaScript naming conventions.
+
+#### Definitions Overview
+
+A **statement** is the complete instruction you give to the database. It usually ends with a semicolon (;) and tells the database to do something (query data, insert, update, delete, etc.).
+
+```sql
+SELECT * FROM users;
+INSERT INTO users (id, name) VALUES (1, 'Alice');
+UPDATE users SET name = 'Bob' WHERE id = 1;
+DELETE FROM users WHERE id = 1;
+```
+
+A **clause** is a building block of a statement.
+
+Think of clauses as keywords that define parts of the statement. A single statement is usually composed of multiple clauses.
+
+```sql
+SELECT – defines which columns to return
+FROM – defines which table(s) to use
+WHERE – filters rows
+GROUP BY – groups rows
+HAVING – filters groups
+ORDER BY – sorts rows
+LIMIT – restricts number of results
+```
+
+An **expression** is a combination of symbols that evaluates to a value.
+
+Expressions can appear inside clauses.
+
+```sql
+Literal: 42, 'Alice'
+Column reference: users.name
+Arithmetic expression: price * quantity
+Logical expression: age > 18 AND active = 1
+Function call: COUNT(*), LOWER(name)
+Case expression: CASE WHEN score >= 60 THEN 'Pass' ELSE 'Fail' END
+```
+
+Example inside a statement:
+
+```sql
+SELECT name, price * quantity AS total
+FROM orders
+WHERE quantity > 10 AND status = 'shipped';
+```
+
+An **operator** in SQL is a symbol or keyword that tells the database how to combine, compare, or manipulate values in an expression.
+
+They are the "glue" inside expressions, and they always work on operands (which can be column references, literals, or results of other expressions).
+
+Arithmetic Operators
+
+```sql
++, -, *, /, %
+```
+
+Comparison Operators – compare values (return true/false/unknown)
+
+```sql
+=, <>, !=, > , < , >= , <=, BETWEEN, AND, LIKE, IN, IS NULL
+```
+
+Logical Operators – combine boolean results
+
+```sql
+AND, OR, NOT
+```
+
+Set Operators – work between result sets (apply between queries, not columns)
+
+```sql
+UNION, UNION ALL, INTERSECT, EXCEPT
+```
 
 #### SQL keywords are capitalized in queries.
 
@@ -144,13 +219,11 @@ See [JavaScript Style Guide](https://github.com/jake-knerr/js-style-guide).
 ```sql
 # avoid
 select *
-  from table;
+from table;
 
 # good
-SELECT
-  *
-FROM
-  table;
+SELECT *
+FROM table;
 ```
 
 #### Prefer left-alignment at the same syntactic level.
@@ -159,87 +232,86 @@ FROM
 
 ```sql
 # discouraged
-SELECT
-  *
-  FROM
-  channels
+SELECT *
+  FROM channels
 
 # preferred
-SELECT
-  *
-FROM
-  channels
+SELECT *
+FROM channels
 ```
 
-#### Prefer to place statements, clauses, and expression keywords on their own line. Indent the remainder of the instruction.
+#### Prefer to place clauses on their own line.
 
-If a clause is a compound clause (for example `JOIN` and `ON` or `ORDER BY` and `DESC`), then place the trailing part of the compound clause on its own line and indented.
+If a clause is a compound clause (for example `JOIN` and `ON` or `ORDER BY` and `DESC`), if the compound keyword is trailing then put it on the same line (E.G. DESC), otherwise put it on a new line.
 
 > Why? This technique makes it easy to see the keywords, the instructions and simplifies line-wrapping.
 
 ```sql
 # discouraged
-SELECT *,
+SELECT *
 FROM channels
-JOIN channels_users ON channels.id = channels_users.channel_id
+JOIN channels_users ON channels.id = channels_users.channel_id AND channels.date = channels_users.date
 GROUP BY channels.id
+ORDER BY channels.date
+  DESC
 
 # preferred
-SELECT
-  *,
-FROM
-  channels
-JOIN
-  channels_users
-  ON
-    channels.id = channels_users.channel_id
-GROUP BY
-  channels.id
+SELECT *
+FROM channels
+JOIN channels_users
+  ON channels.id = channels_users.channel_id
+  AND channels.date = channels_users.date
+GROUP BY channels.id
+ORDER BY channels.date DESC
 ```
 
-#### Prefer to place each condition and argument on a separate line.
+#### Prefer to place single expressions on the same line as the clause and place multiple expressions on separate lines.
 
-Single argument functions can be on one line.
+Functions can be place on a single line if they fit in the column width.
 
 ```sql
 # discouraged
-SELECT
-  id, userName, userLocation, GREATEST(minMoney, maxMoney)
+SELECT id, userName, userLocation,
+  GREATEST(
+    minMoney,
+    maxMoney
+  )
 FROM
   channels
-WHERE
-  id > 10 AND userName = "Jake"
+WHERE id > 10 AND userName = "Jake"
 
 # preferred
 SELECT
   id,
   userName,
   userLocation,
-  GREATEST (
-    minMoney,
-    maxMoney
-  )
-FROM
-  channels
+  GREATEST (minMoney, maxMoney)
+FROM channels
 WHERE
   id > 10
   AND userName = "Jake"
-
-# acceptable
-SELECT
-  COUNT(*) AS totalCount
 ```
 
-#### For multi-line parenthesis, prefer to place the leading parenthesis above the text it encloses and the trailing parenthesis on a new line.
+#### When multi-line parenthesis are used, prefer to place the leading parenthesis above the text it encloses and the trailing parenthesis on a new line.
 
 Place a space between adjacent keywords and the parenthesis.
 
 ```sql
+# discouraged
+SELECT
+  GREATEST (aReallyLongName, anotherEvenLongerName, wowTheseNamesAreGettingRidiculous)
+
+# discouraged
+SELECT
+  GREATEST (aReallyLongName,
+    anotherEvenLongerName, wowTheseNamesAreGettingRidiculous)
+
 # preferred
 SELECT
   GREATEST (
-    minMoney,
-    maxMoney
+    aReallyLongName,
+    anotherEvenLongerName,
+    wowTheseNamesAreGettingRidiculous
   )
 ```
 
@@ -249,23 +321,16 @@ Prefer to place logical operators at the start of the line.
 
 ```sql
 # good - UNION is multi-line
-SELECT
-  *
-FROM
-  users
+SELECT *
+FROM users
 UNION
-SELECT
-  *
-FROM
-  clients
+SELECT*
+FROM clients
 
 # good - LIKE is single line
-SELECT
-  *
-FROM
-  users
-WHERE
-  userName LIKE "%j%"
+SELECT *
+FROM users
+WHERE userName LIKE "%j%"
 ```
 
 **[⬆ Table of Contents](#toc)**
@@ -280,12 +345,19 @@ WHERE
 
 ---
 
+## Front-End Development
+
+See [Cogent](https://github.com/jake-knerr/cogent).
+
+**[⬆ Table of Contents](#toc)**
+
+---
+
 ## Miscellaneous
 
 ### Design Patterns
 
 - [Gang of Four (GoF) Design Patterns in JavaScript](https://github.com/jake-knerr/gof-design-patterns-js)
-- [Cogent](https://github.com/jake-knerr/cogent)
 
 **[⬆ Table of Contents](#toc)**
 
