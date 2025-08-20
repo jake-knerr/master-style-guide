@@ -122,23 +122,19 @@ See [JavaScript Style Guide](https://github.com/jake-knerr/js-style-guide).
 
 #### Use a 80 character column width.
 
-#### Use public ids that are unguessable.
-
 #### Database names, table names, and column names use nouns.
 
 > Why? Because databases store data, which are "things".
 
 #### Database and table names use lower snake-case.
 
-> Why use lowercase? Many databases are configured to require lowercase.
-
-> Why use snake-case? Because it is the SQL standard convention.
+> Why? Many databases are configured to require lowercase and snake-case is the SQL standard convention.
 
 #### Column names are named using lower-camel-case.
 
 > Why? The data more easily maps to JSON and JavaScript naming conventions.
 
-#### Definitions Overview
+#### SQL Definitions Overview
 
 A **statement** is the complete instruction you give to the database. It usually ends with a semicolon (;) and tells the database to do something (query data, insert, update, delete, etc.).
 
@@ -179,9 +175,13 @@ Case expression: CASE WHEN score >= 60 THEN 'Pass' ELSE 'Fail' END
 Example inside a statement:
 
 ```sql
-SELECT name, price * quantity AS total
+SELECT
+  name,
+  price * quantity AS total
 FROM orders
-WHERE quantity > 10 AND status = 'shipped';
+WHERE
+  quantity > 10
+  AND status = 'shipped';
 ```
 
 An **operator** in SQL is a symbol or keyword that tells the database how to combine, compare, or manipulate values in an expression.
@@ -260,9 +260,9 @@ JOIN channels_users
 GROUP BY channels.id
 ```
 
-#### Prefer to place solitary expressions on the same line as the clause and place multiple expressions on separate lines.
+#### Prefer to place solitary expressions on the same line as the clause and place multiple expressions on indented separate lines.
 
-Functions can be place on a single line if they fit in the column width.
+Functions can be placed on a single line if they fit in the column width. Otherwise, place the arguments on separate lines.
 
 ```sql
 # discouraged
@@ -285,6 +285,15 @@ FROM channels
 WHERE
   id > 10
   AND userName = "Jake"
+
+# discouraged
+SELECT
+  id
+FROM
+  users
+
+# preferred
+SELECT id FROM users
 ```
 
 #### When multi-line parenthesis are used, prefer to place the leading parenthesis above the text it encloses and the trailing parenthesis on a new line.
