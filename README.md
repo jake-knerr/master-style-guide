@@ -1,6 +1,6 @@
-# Master Style Guide <!-- omit in toc -->
+# Master Development and Style Guide <!-- omit in toc -->
 
-Welcome to my master style guide.
+Welcome to my master development and style guide.
 
 ## Copyright <!-- omit in toc -->
 
@@ -8,7 +8,7 @@ Jake Knerr © Ardisia Labs LLC
 
 ## Table of Contents <a id="toc" name="toc"></a> <!-- omit in toc -->
 
-- [Style vs. Design](#style-vs-design)
+- [Development vs. Style](#development-vs-style)
 - [Background](#background)
   - [Terms](#terms)
   - [English Language](#english-language)
@@ -17,16 +17,15 @@ Jake Knerr © Ardisia Labs LLC
 - [JavaScript \& Node](#javascript--node)
 - [NPM](#npm)
 - [SQL](#sql)
-- [Github](#github)
 - [Front-End Development](#front-end-development)
-- [Miscellaneous](#miscellaneous)
-  - [Design Patterns](#design-patterns)
+- [Github](#github)
+- [Design Patterns](#design-patterns)
 
-## Style vs. Design
+## Development vs. Style
 
-Although this guide is called a style guide, it focuses on more than simply aesthetic issues like formatting. It also provides design guidance — styling with a purpose.
+This guide focuses on more than simply aesthetic issues like formatting. It also provides development guidance.
 
-When is a rule a style rule? When is a rule a design rule? Like most decisions in artistic endeavors, the difference is a matter of judgment.
+When is a rule a style rule? When is a rule a development rule? Like most decisions in artistic endeavors, the difference is a matter of judgment.
 
 #### Style is usually more specific.
 
@@ -36,17 +35,17 @@ For example, "use semicolons after statements" opposed to "use domain-specific l
 
 In other words, style is more concerned with how information looks, rather than what it means or represents.
 
-#### Style is more coupled to a particular language than design.
+#### Style is more coupled to a particular language than development.
 
-Different languages produce different style guides, but design invokes high-level abstractions that apply to many languages.
+Different languages produce different style guides, but development invokes high-level abstractions that apply to many languages.
 
 #### Style does not trigger side effects.
 
 For example, choosing to put a blank line before a _return_ statement does not trigger code refactoring.
 
-#### Many rules are edge cases that can be classified as style or design (or both) by reasonable developers.
+#### Many rules are edge cases that can be classified as style or development (or both) by reasonable developers.
 
-> Why are these distinctions important? It is good practice to question design decisions, to consider different design approaches, and to understand design decisions. It is not essential to spend mental capital on styling decisions.
+> Why are these distinctions important? It is good practice to question development decisions, to consider different development approaches, and to understand development decisions. It is not essential to spend mental capital on styling decisions.
 
 **[⬆ Table of Contents](#toc)**
 
@@ -79,7 +78,7 @@ For example, choosing to put a blank line before a _return_ statement does not t
 
 ## Directories, Folder Structure, File names
 
-See the naming guide in the [JS guide](https://github.com/jake-knerr/js-style-guide).
+See the naming guide in the [JavaScript and Node Development and Style Guide](https://github.com/jake-knerr/javascript-and-node-development-and-style-guide).
 
 **[⬆ Table of Contents](#toc)**
 
@@ -328,10 +327,6 @@ FROM users
 WHERE userName LIKE "%j%"
 ```
 
-**[⬆ Table of Contents](#toc)**
-
----
-
 #### Place trailing keywords on the same line.
 
 ```sql
@@ -342,10 +337,6 @@ ORDER BY jingle
 #preferred
 ORDER BY jingle DESC
 ```
-
-## Github
-
-#### Repository names are all lowercase.
 
 **[⬆ Table of Contents](#toc)**
 
@@ -359,11 +350,19 @@ See [Cogent](https://github.com/jake-knerr/cogent).
 
 ---
 
-## Miscellaneous
+## Github
 
-### Design Patterns
+#### Repository names are all lowercase.
 
-- [Gang of Four (GoF) Design Patterns in JavaScript](https://github.com/jake-knerr/gof-design-patterns-js)
+**[⬆ Table of Contents](#toc)**
+
+---
+
+## Design Patterns
+
+#### Gang of Four
+
+See [Gang of Four (GoF) Design Patterns in JavaScript](https://github.com/jake-knerr/gof-design-patterns-js).
 
 **[⬆ Table of Contents](#toc)**
 
