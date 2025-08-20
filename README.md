@@ -8,7 +8,7 @@ Jake Knerr © Ardisia Labs LLC
 
 ## Table of Contents <a id="toc" name="toc"></a> <!-- omit in toc -->
 
-- [Architecture vs. Styles](#architecture-vs-styles)
+- [Architecture vs. Style](#architecture-vs-style)
 - [Background](#background)
   - [Terms](#terms)
   - [English Language](#english-language)
@@ -21,7 +21,7 @@ Jake Knerr © Ardisia Labs LLC
 - [Github](#github)
 - [Design Patterns](#design-patterns)
 
-## Architecture vs. Styles
+## Architecture vs. Style
 
 This guide focuses on more than simply aesthetic/styling issues like formatting. It also provides architectural guidance.
 
