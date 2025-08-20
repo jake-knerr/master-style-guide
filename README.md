@@ -242,30 +242,25 @@ FROM channels
 
 #### Prefer to place clauses on their own line.
 
-If a clause is a compound clause (for example `JOIN` and `ON` or `ORDER BY` and `DESC`), if the compound keyword is trailing then put it on the same line (E.G. DESC), otherwise put it on a new line.
-
 > Why? This technique makes it easy to see the keywords, the instructions and simplifies line-wrapping.
 
 ```sql
 # discouraged
-SELECT *
-FROM channels
+SELECT * FROM channels
 JOIN channels_users ON channels.id = channels_users.channel_id AND channels.date = channels_users.date
-GROUP BY channels.id
-ORDER BY channels.date
-  DESC
+GROUP BY
+  channels.id
 
 # preferred
 SELECT *
 FROM channels
 JOIN channels_users
-  ON channels.id = channels_users.channel_id
+  ON channels.id = channels_users.channel_id # another clause
   AND channels.date = channels_users.date
 GROUP BY channels.id
-ORDER BY channels.date DESC
 ```
 
-#### Prefer to place single expressions on the same line as the clause and place multiple expressions on separate lines.
+#### Prefer to place solitary expressions on the same line as the clause and place multiple expressions on separate lines.
 
 Functions can be place on a single line if they fit in the column width.
 
@@ -275,7 +270,7 @@ SELECT id, userName, userLocation,
   GREATEST(
     minMoney,
     maxMoney
-  )
+  ) AS greatest
 FROM
   channels
 WHERE id > 10 AND userName = "Jake"
@@ -285,7 +280,7 @@ SELECT
   id,
   userName,
   userLocation,
-  GREATEST (minMoney, maxMoney)
+  GREATEST (minMoney, maxMoney) AS greatest
 FROM channels
 WHERE
   id > 10
@@ -299,12 +294,12 @@ Place a space between adjacent keywords and the parenthesis.
 ```sql
 # discouraged
 SELECT
-  GREATEST (aReallyLongName, anotherEvenLongerName, wowTheseNamesAreGettingRidiculous)
+  GREATEST (aReallyLongName, anotherEvenLongerName, wowTheseNamesAreGettingRidiculous) AS greatest
 
 # discouraged
 SELECT
   GREATEST (aReallyLongName,
-    anotherEvenLongerName, wowTheseNamesAreGettingRidiculous)
+    anotherEvenLongerName, wowTheseNamesAreGettingRidiculous) AS greatest
 
 # preferred
 SELECT
@@ -312,7 +307,7 @@ SELECT
     aReallyLongName,
     anotherEvenLongerName,
     wowTheseNamesAreGettingRidiculous
-  )
+  ) AS greatest
 ```
 
 #### Operators are inline. However, if either operand is multi-line then the operator should be placed alone on a newline with the operands left-aligned above and below.
@@ -336,6 +331,17 @@ WHERE userName LIKE "%j%"
 **[⬆ Table of Contents](#toc)**
 
 ---
+
+#### Place trailing keywords on the same line.
+
+```sql
+# discouraged
+ORDER BY jingle
+  DESC
+
+#preferred
+ORDER BY jingle DESC
+```
 
 ## Github
 
