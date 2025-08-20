@@ -8,7 +8,7 @@ Jake Knerr © Ardisia Labs LLC
 
 ## Table of Contents <a id="toc" name="toc"></a> <!-- omit in toc -->
 
-- [Development vs. Style](#development-vs-style)
+- [Architecture vs. Style](#architecture-vs-style)
 - [Background](#background)
   - [Terms](#terms)
   - [English Language](#english-language)
@@ -21,11 +21,11 @@ Jake Knerr © Ardisia Labs LLC
 - [Github](#github)
 - [Design Patterns](#design-patterns)
 
-## Development vs. Style
+## Architecture vs. Style
 
-This guide focuses on more than simply aesthetic/styling issues like formatting. It also provides development guidance.
+This guide focuses on more than simply aesthetic/styling issues like formatting. It also provides architectural guidance.
 
-When is a rule a style rule? When is a rule a development rule? Like most decisions in artistic endeavors, the difference is a matter of judgment.
+When is a rule a style rule? When is a rule a architectural rule? Like most decisions in artistic endeavors, the difference is a matter of judgment.
 
 #### Style is usually more specific.
 
@@ -35,17 +35,17 @@ For example, "use semicolons after statements" opposed to "use domain-specific l
 
 In other words, style is more concerned with how information looks, rather than what it means or represents.
 
-#### Style is more coupled to a particular language than development.
+#### Style is more coupled to a particular language.
 
-Different languages produce different style guides, but development invokes high-level abstractions that apply to many languages.
+Different languages produce different style guides, but architectural rules invoke high-level abstractions that apply to many languages.
 
 #### Style does not trigger side effects.
 
 For example, choosing to put a blank line before a _return_ statement does not trigger code refactoring.
 
-#### Many rules are edge cases that can be classified as style or development (or both) by reasonable developers.
+#### Many rules are edge cases that can be classified as style or architectural (or both) by reasonable developers.
 
-> Why are these distinctions important? It is good practice to question development decisions, to consider different development approaches, and to understand development decisions. It is not essential to spend mental capital on styling decisions.
+> Why are these distinctions important? It is good practice to question architectural decisions, to consider different architectural approaches, and to understand architectural decisions. It is not essential to spend mental capital on styling decisions.
 
 **[⬆ Table of Contents](#toc)**
 
