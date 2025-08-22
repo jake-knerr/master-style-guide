@@ -283,7 +283,8 @@ FROM
   users
 
 # preferred
-SELECT id FROM users
+SELECT id
+FROM users
 ```
 
 #### When multi-line parenthesis are used, prefer to place the leading parenthesis above the text it encloses and the trailing parenthesis on a new line.
